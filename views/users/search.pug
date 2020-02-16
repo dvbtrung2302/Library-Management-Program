@@ -1,0 +1,14 @@
+extends ../layouts/common.pug
+
+block content 
+	h1 Search User
+	form(class="form-inline", action="/users/search", method="GET")
+		labe Name
+		input(class="form-control mr-sm-2 ml-2", name="q", type="text")
+		button(class="btn btn-outline-info my-2 my-sm-0") Search
+	ul(class="list-group")
+		each user in users
+			li(class="list-group-item")
+				span= user.name
+
+	a(class="btn btn-outline-info mt-2" href="/" role="button") Home

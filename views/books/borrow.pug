@@ -1,0 +1,23 @@
+extends ../layouts/common.pug
+
+block content 
+	h1 Borrow Books
+	p Hello #{name} !
+	form(class="form-inline", action="/books/borrow", method="GET")
+		labe Name Of Book
+		input(class="form-control mr-sm-2 ml-2", name="q", type="text")
+		button(class="btn btn-outline-info my-2 my-sm-0") Search
+	ul(class="list-group")
+		each book in books
+			li(class="list-group-item")
+				span= book.name
+				span
+					button(type="button", id="borrow-btn", class="btn btn-outline-info ml-2") Borrow
+
+
+	a(class="btn btn-outline-info mt-2" href="/" role="button") Home
+block scripts
+	script(src="https://unpkg.com/lodash@4/lodash.min.js")
+	script(src="https://unpkg.com/lowdb@0.17/dist/low.min.js")
+	script(src="https://unpkg.com/lowdb@0.17/dist/LocalStorage.min.js")
+	script(src="/scripts/borrowbook.js")
